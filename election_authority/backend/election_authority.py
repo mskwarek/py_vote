@@ -2,7 +2,7 @@ import flask
 
 
 app = flask.Flask(__name__, instance_relative_config=True)
-class VoteProxy():
+class ElectionAuthority():
     def __init__(self):
         self.candidates = []
 
