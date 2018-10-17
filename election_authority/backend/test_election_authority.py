@@ -13,3 +13,7 @@ def test_empty_db(client):
     rv = client.get('/')
     assert 200 == rv.status_code
 
+def test_get_candidate_list_endpoint(client):
+    rv = client.get('/candidates')
+    assert 200 == rv.status_code
+
