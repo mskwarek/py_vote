@@ -17,3 +17,7 @@ def test_get_candidate_list_endpoint(client):
     rv = client.get('/candidates')
     assert 200 == rv.status_code
 
+def test_blind_proxy_ballot_endpoint(client):
+    rv = client.get('/proxy/ballot/blind')
+    assert 200 == rv.status_code
+
