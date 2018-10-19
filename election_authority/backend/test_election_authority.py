@@ -19,11 +19,24 @@ def test_rc_get_candidate_list_endpoint(client):
     assert 200 == rv.status_code
 
 
-def test_get_non_empty_candidate_list_endpoint(client):
+def test_get_non_empty_response_candidate_list_endpoint(client):
     rv = client.get('/candidates')
     data = json.loads(rv.get_data(as_text=True))
     assert 200 == rv.status_code
     assert data != None
+
+
+def test_get_non_none_json_in_response_candidate_list_endpoint(client):
+    rv = client.get('/candidates')
+    data = json.loads(rv.get_data(as_text=True))
+    assert data['candidates'] != None
+
+
+def test_get_non_empty_candidates_list_in_response_candidate_list_endpoint(client):
+    rv = client.get('/candidates')
+    data = json.loads(rv.get_data(as_text=True))
+    assert len(data['candidates']) != None
+    assert len(data['candidates']) > 0
 
 
 def test_blind_proxy_ballot_endpoint(client):

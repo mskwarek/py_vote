@@ -13,7 +13,7 @@ def index():
 
 @app.route('/candidates')
 def get_candidates():
-    return jsonify()
+    return jsonify({ "candidates" : [""]})
 
 
 @app.route('/proxy/ballot/blind', methods=['GET', 'POST'])
