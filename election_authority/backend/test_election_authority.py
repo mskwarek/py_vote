@@ -38,6 +38,13 @@ def test_get_non_empty_candidates_list_in_response_candidate_list_endpoint(clien
     assert len(data['candidates']) != None
     assert len(data['candidates']) > 0
 
+def test_get_non_candidate_string_in_response_candidate_list_endpoint(client):
+    rv = client.get('/candidates')
+    data = json.loads(rv.get_data(as_text=True))
+    assert len(data['candidates']) != None
+    assert len(data['candidates']) > 0
+    assert data['candidates'][len(data['candidates']) - 1] != ""
+
 
 def test_blind_proxy_ballot_endpoint(client):
     rv = client.post('/proxy/ballot/blind')
@@ -47,3 +54,12 @@ def test_post_unblinded_proxy_ballot_endpoint(client):
     rv = client.post('/proxy/ballot/unblinded')
     assert 200 == rv.status_code
 
+
+def test_get_sl_endpoint(client):
+    rv = client.get('/proxy/exponents')
+    assert 200 == rv.status_code
+
+
+def test_get_tokens_endpoint(client):
+    rv = client.get('/proxy/tokens')
+    assert 200 == rv.status_code
