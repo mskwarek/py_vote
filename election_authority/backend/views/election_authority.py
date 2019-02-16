@@ -1,13 +1,13 @@
 from flask import (Blueprint, jsonify)
-
+from authority import serial_numbers_generator
 
 blueprint = Blueprint("ea", __name__)
 
 
 class ElectionAuthority():
     def __init__(self):
-        self.candidates = ["Jan Kowalski", "Janusz Nowak"]
-
+        self.candidates = ["Jan Kowalski", "Janusz Nowak", "Candidate First", "Candidate Second",
+            "Candidate Third"]
 
 ea_instance = ElectionAuthority()
 
