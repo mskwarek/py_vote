@@ -63,3 +63,8 @@ def test_get_sl_endpoint(client):
 def test_get_tokens_endpoint(client):
     rv = client.get('/proxy/tokens')
     assert 200 == rv.status_code
+
+
+def test_get_new_client(client):
+    rv = client.get('/client/new')
+    assert 200 == rv.status_code
